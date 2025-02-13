@@ -63,4 +63,3 @@ abc()
 
 //anything which is not inside the function is called to be in the global scope
 console.log(`hi`)
-console.log(`by`)
