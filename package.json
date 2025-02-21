@@ -1,0 +1,21 @@
+{
+  "name": "fsdgfg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js",
+    "dev": "node script.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "figlet": "^1.8.0"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.23"
+  }
+}
