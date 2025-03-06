@@ -3,6 +3,7 @@ import Data from "./Data.js"
 import Home from "./Home.jsx"
 import { useContext } from "react"
 import { ThemeStore } from "./Utility/ThemeContext.jsx"
+import { useSelector } from "react-redux"
 let Navbar = () => {
     let { theme, setTheme } = useContext(ThemeStore)
     let dark = "bg-black"
@@ -10,15 +11,18 @@ let Navbar = () => {
     let togleTheme = () => {
         setTheme(theme == 'dark' ? 'light' : 'dark')
     }
+    let cartItems = useSelector((store)=>store.cart.items)
     return (
         <>
-            <div className={`${theme == 'dark' ? dark : light} flex w-full ml-0`}>
+        {
+        console.log(cartItems)}
+            <div className={`${theme == 'dark' ? dark : light} flex w-full px-1`}>
                 <div className="flex-1">
                     <Link to="/" className="btn btn-ghost text-xl text-blue-500 mt-1.5">XenaCart</Link> {/**here we are using Link to because it just refreshes our DOM but the anchor tag refreshes the whole page*/}
                 </div>
-                <div className="flex-none h-[9vh]">
-                    <ul className="menu menu-horizontal px-1 text-blue-500">
-                        <li><Link to="/cart">Cart</Link></li>
+                <div className="">
+                    <ul className="menu menu-horizontal flex gap-2 text-blue-500">
+                        <li><Link to="/cart">Cart<sup className="text-black font-bold">{cartItems.length}</sup></Link></li>
                         <li><Link to="/about">About</Link></li>
                         <li><Link to="/food">Food</Link></li>
                         <label className="swap swap-rotate transition-transform duration-100 hover:scale-125">

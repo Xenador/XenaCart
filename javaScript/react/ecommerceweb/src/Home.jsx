@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Shimmerui from "./Shimmerui.jsx"
 import { useContext } from "react"
 import { ThemeStore } from "./Utility/ThemeContext.jsx"
+import AddedProductCart from "./AddedProductCart.jsx"
 
 let Home = () => {
     let {theme,SetTheme} = useContext(ThemeStore)
@@ -95,8 +96,19 @@ so to solve this prolblem we use the conteext api which can directly pass that p
 //->React is called single page component because react creates a single document and updates the parts of that single page document instead of reloading the whole document 
 //that why react is very fast and is called SPA that is single page document
 
+//                                     Controlled and uncontrolled components 
+//->Components that have there own state and the feilds of that components shall change corresponfing to the state of that component is 
+//called controlled component
 
 
+//                                     State lifting and prop lifting 
+//->Whenever we send the prop from the child component to the parent component its called prop lifting or the statelifting
+
+
+//                                      Clear Component or clear state or clean up function for the optimization
+//this function will be called and keep on running after every half a second and 
+//the concering part is that it will keep of running even if the cart component is closed this will significantly affect the performance of our project thats why its important to close or clear this 
+//this the clear function that will be called after the cart component is closed this will particularly stop all the ongoing tasks in the component
     // let handleSearch = ()=>{
     //     setSearchQuery()
     //     let filteredArray = allProducts.filter((obj)=>{
@@ -114,6 +126,7 @@ so to solve this prolblem we use the conteext api which can directly pass that p
     // }
     let darkTheme = "bg-gray"
     let lightTheme = "bg-gray-400"
+    let AddedComponent = AddedProductCart(Productcard)
     return (
 
         <>
@@ -136,7 +149,8 @@ so to solve this prolblem we use the conteext api which can directly pass that p
                     {
                         productData.map((obj) => {
                             return (
-                                <Productcard obj={obj} key={obj.id}></Productcard>//here the role of the is to  diffentiate btween the diff card of components as according to react there are multiple objects in the in the data that are really vrey similar basically id is differentiation the domponents from esch other
+                                <AddedComponent obj={obj} key={obj.id}></AddedComponent>
+                                //<Productcard obj={obj} key={obj.id}></Productcard>//here the role of the is to  diffentiate btween the diff card of components as according to react there are multiple objects in the in the data that are really vrey similar basically id is differentiation the domponents from esch other
                              )
                         })
                     }

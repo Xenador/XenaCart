@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { ThemeStore } from "./Utility/ThemeContext"
-
+import { useDispatch } from "react-redux"
+import { addCart } from "./Utility/Store/cartSlice"
 let Productcard = ({ obj }) => {
     let { theme, setTheme } = useContext(ThemeStore)
     let { title, thumbnail, category, rating, brand, price, id } = obj
@@ -9,9 +10,9 @@ let Productcard = ({ obj }) => {
     let handleClick = () => {
         navigate(`/products/${id}`)
     }
-
+    let dispatch = useDispatch()
     let handleAddBtn = (event) => {
-        console.log(`Add Btn is clicked`)
+        dispatch(addCart(obj))//this is the dsipatch and addcart ke andar jo bhi pass hoga vo payloadm jaega
         event.stopPropagation()
     }
     let lightTheme = "bg-gray-300"

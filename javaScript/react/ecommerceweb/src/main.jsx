@@ -10,7 +10,9 @@ import Error from './Error.jsx'
 import Product from './Product.jsx'
 import Productcard from './Productcard.jsx'
 import Shimmerui from './Shimmerui.jsx'
-let Food = lazy(()=> import("./Food.jsx"))
+import store from './Utility/Store/store.js'
+import {Provider} from 'react-redux'
+let Food = lazy(()=> import("./Food.jsx"))//here the component is imported or is being downloaded...
 let router = createBrowserRouter([
   {
     path : "/",
@@ -34,7 +36,7 @@ let router = createBrowserRouter([
       },
       {
         path : "/food",
-        element : <Suspense fallback = {<Shimmerui></Shimmerui>}>
+        element : <Suspense fallback = {<Shimmerui></Shimmerui>}>//there is lazy loading so react will try to render the component before its imported or downloaded so suspense will help to wait and fallback will ensure that the shimmerui will be seen until the food component is not downloaded on the user's demand
            <Food></Food>
         </Suspense>
       }
@@ -44,5 +46,7 @@ let router = createBrowserRouter([
   }
 ])
 createRoot(document.getElementById('root')).render(
+  <Provider store={store}>{/*here we are connecting our store to our app (redux-store)*/}
   <RouterProvider router={router}></RouterProvider>
+  </Provider>
 )

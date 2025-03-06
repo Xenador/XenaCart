@@ -11,5 +11,4 @@ const ThemeContext = ({ children }) => {
         </ThemeStore.Provider>
     )
 }
-
 export default ThemeContext
