@@ -2,14 +2,17 @@ import { Link } from "react-router-dom"
 import Data from "./Data.js"
 import Home from "./Home.jsx"
 import { useContext } from "react"
+import store from "./Utility/Store/store.js"
 import { ThemeStore } from "./Utility/ThemeContext.jsx"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { toggleTheme } from "./Utility/Store/themeSlice.js"
 let Navbar = () => {
-    let { theme, setTheme } = useContext(ThemeStore)
+    let theme = useSelector((store)=>store.theme.theme)
     let dark = "bg-black"
     let light = "bg-white"
+    let dispatch  = useDispatch()
     let togleTheme = () => {
-        setTheme(theme == 'dark' ? 'light' : 'dark')
+        dispatch(toggleTheme())
     }
     let cartItems = useSelector((store)=>store.cart.items)
     return (
