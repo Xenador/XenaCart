@@ -14,7 +14,7 @@ function Cart() {
     dispatch(priceDescending())
   }
   let handleAscending = () => {
-    dispatch(priceAscending())
+    dispatch(priceAscending())//this is example diff commit for new branch
   }
   return (
     <div className="overflow-x-auto px-4">
