@@ -7,6 +7,7 @@ import { clearCart, priceAscending, priceDescending } from './Utility/Store/cart
 function Cart() {
   let dispatch = useDispatch()
   let cartItems = useSelector((store) => store.cart.items)
+  let theme = useSelector((store)=>store.theme.theme)
   let handleClear = () => {
     dispatch(clearCart())
   }
@@ -17,10 +18,10 @@ function Cart() {
     dispatch(priceAscending())
   }
   return (
-    <div className="overflow-x-auto px-4">
-      {cartItems.length != 0 ? <table className="table">
+    <div className={`min-h-[90vh] overflow-y-auto px-4 ${theme=='dark'?'bg-black':'bg-white'}`}>
+      {cartItems.length != 0 ? <table className={`table ${theme=='dark'?'text-white':'text-black'}`}>
         {/* head */}
-        <thead className='text-xl'>
+        <thead className={`text-xl ${theme=='dark'?'text-white':'text-black'}`}>
           <tr className='text-center'>
             <th className='text-left pl-16'>Name</th>
             <th>Rating</th>

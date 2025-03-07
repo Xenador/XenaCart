@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
 import { ThemeStore } from "./Utility/ThemeContext"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addCart } from "./Utility/Store/cartSlice"
 let Productcard = ({ obj }) => {
-    let { theme, setTheme } = useContext(ThemeStore)
+    let theme = useSelector((store)=>store.theme.theme)
     let { title, thumbnail, category, rating, brand, price, id } = obj
     let navigate = useNavigate()
     let handleClick = () => {

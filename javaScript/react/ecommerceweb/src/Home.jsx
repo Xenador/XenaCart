@@ -4,9 +4,11 @@ import Shimmerui from "./Shimmerui.jsx"
 import { useContext } from "react"
 import { ThemeStore } from "./Utility/ThemeContext.jsx"
 import AddedProductCart from "./AddedProductCart.jsx"
+import { useSelector } from "react-redux"
+import store from "./Utility/Store/store.js"
 
 let Home = () => {
-    let {theme,SetTheme} = useContext(ThemeStore)
+    let theme = useSelector((store)=>store.theme.theme)
     let [allProducts, setAllProducts] = useState([])//this state will store all the data this is optimal
     let [productData, setProductdata] = useState([])//this state will keep on updating the home component
     //let[searchQuery,setSearchQuery] = useState("")
